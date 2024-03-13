@@ -1,0 +1,19 @@
+﻿<Window x:Class="Laboratory2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Laboratory2" xmlns:views="clr-namespace:Laboratory2.Views"
+        xmlns:viewModels="clr-namespace:Laboratory2.ViewModels"
+        mc:Ignorable="d"
+        Title="Laboratory2" SizeToContent="WidthAndHeight" MinHeight="200"  MinWidth="300" 
+        Content="{Binding CurrentViewModel, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+    <Window.Resources>
+        <DataTemplate DataType="{ x:Type viewModels:FormViewModel}">
+            <views:FormView></views:FormView>
+        </DataTemplate>
+        <DataTemplate DataType="{ x:Type viewModels:InfoViewModel}">
+            <views:InfoView></views:InfoView>
+        </DataTemplate>
+    </Window.Resources>
+</Window>

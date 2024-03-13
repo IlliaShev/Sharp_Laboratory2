@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="Laboratory2.Views.InfoView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Laboratory2.Views"
+             mc:Ignorable="d" 
+             d:DesignWidth="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock  Grid.Row="0" Grid.Column="0" TextAlignment="Right" HorizontalAlignment="Stretch" Margin="5" VerticalAlignment="Center" Text="First name:"></TextBlock>
+        <TextBlock  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" TextAlignment="Left" HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="{Binding FirstName,Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+        <TextBlock  Grid.Row="1" Grid.Column="0" TextAlignment="Right" HorizontalAlignment="Stretch" Margin="5" VerticalAlignment="Center" Text="Last name:"></TextBlock>
+        <TextBlock  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" TextAlignment="Left" HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="{Binding LastName,Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+        <TextBlock  Grid.Row="2" Grid.Column="0" TextAlignment="Right" HorizontalAlignment="Stretch" Margin="5" VerticalAlignment="Center" Text="Email:"></TextBlock>
+        <TextBlock  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" TextAlignment="Left" HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="{Binding Email,Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+        <TextBlock  Grid.Row="3" Grid.Column="0" TextAlignment="Right" HorizontalAlignment="Stretch" Margin="5" VerticalAlignment="Center" Text="Date of birth:"></TextBlock>
+        <TextBlock  Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" TextAlignment="Left" HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="{Binding Birthday,Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+        <TextBlock  Grid.Row="4" Grid.Column="0" TextAlignment="Right" HorizontalAlignment="Stretch" Margin="5" VerticalAlignment="Center" Text="Is adult:"></TextBlock>
+        <TextBlock  Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" TextAlignment="Left" HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="{Binding IsAdult, UpdateSourceTrigger=PropertyChanged}" ></TextBlock>
+        <TextBlock  Grid.Row="5" Grid.Column="0" TextAlignment="Right" HorizontalAlignment="Stretch" Margin="5" VerticalAlignment="Center" Text="Is birthday:"></TextBlock>
+        <TextBlock  Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" TextAlignment="Left" HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="{Binding IsBirthday, UpdateSourceTrigger=PropertyChanged}" Width="Auto" Height="Auto"></TextBlock>
+        <TextBlock  Grid.Row="6" Grid.Column="0" TextAlignment="Right" HorizontalAlignment="Stretch" Margin="5"  Text="Chinese zodiac:" Width="Auto" Height="Auto"></TextBlock>
+        <TextBlock  Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" TextAlignment="Left" HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="{Binding ChineseZod, Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Width="Auto" Height="Auto"></TextBlock>
+        <TextBlock  Grid.Row="7" Grid.Column="0" TextAlignment="Right" Text="Sun zodiac:" Margin="5" Width="Auto"  VerticalAlignment="Center"/>
+        <TextBlock  Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="3" TextAlignment="Left" HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="{Binding WesternZod, Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Width="Auto" Height="Auto"></TextBlock>
+        <Button Content="Form" Grid.Row="8" Grid.Column="0" HorizontalAlignment="Stretch" Margin="5" VerticalAlignment="Stretch" Width="Auto" Command="{Binding GoToFormCommand}"/>
+        <Button Content="Close" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5" VerticalAlignment="Stretch" Width="Auto" Command="{Binding CloseCommand}"/>
+    </Grid>
+</UserControl>

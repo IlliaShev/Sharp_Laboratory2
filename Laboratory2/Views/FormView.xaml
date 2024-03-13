@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="Laboratory2.Views.FormView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Laboratory2.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="180" d:DesignWidth="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock  Grid.Row="0" Text="Date birth" HorizontalAlignment="Right" Margin="5,5" VerticalAlignment="Center" Width="Auto" Height="Auto"></TextBlock>
+        <DatePicker Text="Pick your date" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Grid.ColumnSpan="3" Margin="5,5" VerticalAlignment="Stretch" Width="Auto" Height="Auto"  SelectedDate="{Binding Birthday, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
+        <TextBlock  Grid.Row="1" Grid.Column="0" Text="First name" HorizontalAlignment="Right" Margin="5,5" VerticalAlignment="Center" Width="Auto" Height="Auto"></TextBlock>
+        <TextBox  Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5,5" Grid.ColumnSpan="3" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Text="{Binding FirstName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <TextBlock  Grid.Row="2" Grid.Column="0" Text="Last name" HorizontalAlignment="Right" Margin="5,5" VerticalAlignment="Center" Width="Auto" Height="Auto"></TextBlock>
+        <TextBox  Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5,5" Grid.ColumnSpan="3" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Text="{Binding LastName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <TextBlock  Grid.Row="3" Grid.Column="0" Text="Email" HorizontalAlignment="Right" Margin="5,5" VerticalAlignment="Center" Width="Auto" Height="Auto"></TextBlock>
+        <TextBox  Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" Grid.ColumnSpan="3" Margin="5,5" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Text="{Binding Email, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <Button Content="Proceed" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" Width="Auto" Command="{Binding ProceedCommand}"/>
+        <Button Content="Close" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" Width="Auto" Command="{Binding CloseCommand}"/>
+    </Grid>
+</UserControl>
