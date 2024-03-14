@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Laboratory2.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -96,7 +97,11 @@ namespace Laboratory2.Models
         {
             if (!IsValidEmail())
             {
-                throw new InvalidOperationException("You entered invalid email!");
+                throw new InvalidEmailException("You entered invalid email!");
+            }
+            if (_birthday >= DateTime.Today)
+            {
+                throw new BirthInFutureException("You are not born yet!");
             }
             var calcIsAdult = Task.Run(() => {
                 if (_birthday != null)
@@ -131,9 +136,9 @@ namespace Laboratory2.Models
             await calcIsBirthday; 
             await calcWesternZod; 
             await calcChineseZod;
-            if (_age >= 135 || _birthday > DateTime.Today)
+            if (_age >= 135)
             {
-                throw new InvalidOperationException("You are not born or too old!");
+                throw new BirthFarInPastException($"You age is {Age}. You are too old for this!");
             }
         }
 
