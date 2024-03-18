@@ -116,6 +116,7 @@ namespace Laboratory2.Models
                     _isBirthday = false;
                     return;
                 }
+                Thread.Sleep(400);
                 var today = DateTime.Today;
                 var birth = (DateTime)_birthday;
                 _isBirthday = birth.Day == today.Day && birth.Month == today.Month;
@@ -136,6 +137,7 @@ namespace Laboratory2.Models
             await calcIsBirthday; 
             await calcWesternZod; 
             await calcChineseZod;
+
             if (_age >= 135)
             {
                 throw new BirthFarInPastException($"You age is {Age}. You are too old for this!");

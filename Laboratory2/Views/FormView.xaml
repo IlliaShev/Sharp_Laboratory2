@@ -21,14 +21,14 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <TextBlock  Grid.Row="0" Text="Date birth" HorizontalAlignment="Right" Margin="5,5" VerticalAlignment="Center" Width="Auto" Height="Auto"></TextBlock>
-        <DatePicker Text="Pick your date" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Grid.ColumnSpan="3" Margin="5,5" VerticalAlignment="Stretch" Width="Auto" Height="Auto"  SelectedDate="{Binding Birthday, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
+        <DatePicker Text="Pick your date" IsEnabled="{Binding IsEnabledInterface}" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Grid.ColumnSpan="3" Margin="5,5" VerticalAlignment="Stretch" Width="Auto" Height="Auto"  SelectedDate="{Binding Birthday, Mode=TwoWay, UpdateSourceTrigger=LostFocus}"/>
         <TextBlock  Grid.Row="1" Grid.Column="0" Text="First name" HorizontalAlignment="Right" Margin="5,5" VerticalAlignment="Center" Width="Auto" Height="Auto"></TextBlock>
-        <TextBox  Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5,5" Grid.ColumnSpan="3" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Text="{Binding FirstName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <TextBox  Grid.Row="1" Grid.Column="1" IsEnabled="{Binding IsEnabledInterface}" HorizontalAlignment="Stretch" Margin="5,5" Grid.ColumnSpan="3" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Text="{Binding FirstName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></TextBox>
         <TextBlock  Grid.Row="2" Grid.Column="0" Text="Last name" HorizontalAlignment="Right" Margin="5,5" VerticalAlignment="Center" Width="Auto" Height="Auto"></TextBlock>
-        <TextBox  Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5,5" Grid.ColumnSpan="3" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Text="{Binding LastName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <TextBox  Grid.Row="2" Grid.Column="1" IsEnabled="{Binding IsEnabledInterface}" HorizontalAlignment="Stretch" Margin="5,5" Grid.ColumnSpan="3" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Text="{Binding LastName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></TextBox>
         <TextBlock  Grid.Row="3" Grid.Column="0" Text="Email" HorizontalAlignment="Right" Margin="5,5" VerticalAlignment="Center" Width="Auto" Height="Auto"></TextBlock>
-        <TextBox  Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" Grid.ColumnSpan="3" Margin="5,5" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Text="{Binding Email, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></TextBox>
-        <Button Content="Proceed" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" Width="Auto" Command="{Binding ProceedCommand}"/>
+        <TextBox  Grid.Row="3" Grid.Column="1" IsEnabled="{Binding IsEnabledInterface}" HorizontalAlignment="Stretch" Grid.ColumnSpan="3" Margin="5,5" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Text="{Binding Email, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <Button Content="Proceed" Grid.Row="4" IsEnabled="{Binding IsEnabledInterface}" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" Width="Auto" Command="{Binding ProceedCommand}"/>
         <Button Content="Close" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Margin="5,5,5,5" VerticalAlignment="Stretch" Width="Auto" Command="{Binding CloseCommand}"/>
     </Grid>
 </UserControl>

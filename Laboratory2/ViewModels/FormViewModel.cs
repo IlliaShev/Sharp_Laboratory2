@@ -12,17 +12,31 @@ using System.Windows;
 
 namespace Laboratory2.ViewModels
 {
-    internal class FormViewModel : INavigatable<NavigationTypes>
+    internal class FormViewModel : INavigatable<NavigationTypes>, INotifyPropertyChanged
     {
 
         private Person _person;
         private RelayCommand<object> _closeCommand;
         private RelayCommand<object> _proceedCommand;
         private readonly Action _navigateToInfo;
+        private bool _isEnabledInterface = true;
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
         public FormViewModel(Action navigateToInfo, ref Person person)
         {
             _navigateToInfo = navigateToInfo;
             _person = person;
+        }
+
+        public bool IsEnabledInterface
+        {
+            get { return _isEnabledInterface; }
+            set 
+            {
+                _isEnabledInterface = value;
+                OnPropertyChanged(nameof(IsEnabledInterface));
+            }
         }
 
         public string FirstName
@@ -73,13 +87,22 @@ namespace Laboratory2.ViewModels
         {
             try
             {
+                IsEnabledInterface = false;
                 await Task.Run(() => _person.Proceed());
-            } catch (Exception ex)
+                IsEnabledInterface = true;
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                IsEnabledInterface = true;
                 return;
             }
             _navigateToInfo.Invoke();
+        }
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public NavigationTypes ViewType => NavigationTypes.Form;
