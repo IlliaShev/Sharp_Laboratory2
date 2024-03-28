@@ -11,7 +11,6 @@ namespace Laboratory2.Navigation
     internal abstract class BaseNavigationViewModel<TObject> : INotifyPropertyChanged where TObject : Enum
     {
 
-        private List<INavigatable<TObject>> _viewModels = new();
         private INavigatable<TObject> _currentViewModel;
 
         public INavigatable<TObject> CurrentViewModel
@@ -38,18 +37,11 @@ namespace Laboratory2.Navigation
 
             if (viewModel == null)
                 return;
-
-            _viewModels.Add(viewModel);
             CurrentViewModel = viewModel;
         }
 
         private INavigatable<TObject> GetViewModel(TObject type)
         {
-            INavigatable<TObject> viewModel = _viewModels.FirstOrDefault(viewModel => viewModel.ViewType.Equals(type));
-
-            if (viewModel != null)
-                return viewModel;
-
             return CreateViewModel(type);
         }
 

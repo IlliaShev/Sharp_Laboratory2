@@ -12,14 +12,14 @@ namespace Laboratory2.ViewModels
     internal class InfoViewModel: INavigatable<NavigationTypes>
     {
         private readonly Person _person;
-        private readonly Action _navigateToForm;
+        private readonly Action _navigateToPersonList;
         private RelayCommand<object> _closeCommand;
-        private RelayCommand<object> _goToFormCommand;
+        private RelayCommand<object> _goToPersonListCommand;
 
-        public InfoViewModel(Action navigateToForm, ref Person person) 
+        public InfoViewModel(Action navigateToPersonList) 
         {
-            _navigateToForm = navigateToForm;
-            _person = person;
+            _navigateToPersonList = navigateToPersonList;
+            _person = NavigateViewModel.sharedPerson;
         }
 
         public string FirstName
@@ -62,11 +62,11 @@ namespace Laboratory2.ViewModels
             get {  return _person.IsBirthday ? "Yes" : "No"; }
         }
 
-        public RelayCommand<object> GoToFormCommand
+        public RelayCommand<object> GoToPersonListCommand
         {
             get
             {
-                return _goToFormCommand ??= new RelayCommand<object>(_ => _navigateToForm.Invoke());
+                return _goToPersonListCommand ??= new RelayCommand<object>(_ => _navigateToPersonList.Invoke());
             }
         }
         public RelayCommand<object> CloseCommand

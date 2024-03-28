@@ -38,7 +38,6 @@
         <TextBlock  Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" TextAlignment="Left" HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="{Binding ChineseZod, Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Width="Auto" Height="Auto"></TextBlock>
         <TextBlock  Grid.Row="7" Grid.Column="0" TextAlignment="Right" Text="Sun zodiac:" Margin="5" Width="Auto"  VerticalAlignment="Center"/>
         <TextBlock  Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="3" TextAlignment="Left" HorizontalAlignment="Stretch" VerticalAlignment="Center" Text="{Binding WesternZod, Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Width="Auto" Height="Auto"></TextBlock>
-        <Button Content="Form" Grid.Row="8" Grid.Column="0" HorizontalAlignment="Stretch" Margin="5" VerticalAlignment="Stretch" Width="Auto" Command="{Binding GoToFormCommand}"/>
-        <Button Content="Close" Grid.Row="8" Grid.Column="1" HorizontalAlignment="Stretch" Margin="5" VerticalAlignment="Stretch" Width="Auto" Command="{Binding CloseCommand}"/>
+        <Button Content="Person List" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Margin="5" VerticalAlignment="Stretch" Width="Auto" Command="{Binding GoToPersonListCommand}"/>
     </Grid>
 </UserControl>

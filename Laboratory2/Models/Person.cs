@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -19,70 +20,110 @@ namespace Laboratory2.Models
             Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius, Pisces
         }
 
-        private DateTime? _birthday;
+        private DateTime _birthday;
+        private Guid _id;
         private ChineseZodiac _chineseZod;
         private WesternZodiac _westernZod;
-        private string _fisrtName;
+        private string _firstName;
         private string _lastName;
         private string? _email;
         private bool _isAdult;
         private bool _isBirthday;
         private int _age;
 
-        public bool IsAdult 
-        { 
-            get { return _isAdult; } 
-        }
-        public bool IsBirthday 
-        { 
-            get { return _isBirthday; }
-        }
-        public ChineseZodiac ChineseZod 
+        public Guid Id { get { return _id; } }
+
+        public string FirstName
         {
-            get { return _chineseZod; }
+            get { return _firstName; }
+            set { _firstName = value; }
         }
-        public WesternZodiac WesternZod
-        {
-            get { return _westernZod; }
-        }
-        public int Age 
-        { 
-            get { return _age; }
-        }
-        public string FirstName 
-        {
-            get { return _fisrtName; }
-            set { _fisrtName = value; }
-        }
-        public string LastName 
+        public string LastName
         {
             get { return _lastName; }
             set { _lastName = value; }
         }
-        public string? Email 
+        public string? Email
         {
             get { return _email; }
             set { _email = value; }
         }
-        public DateTime? Birthday 
+
+        public DateTime Birthday
         {
             get { return _birthday; }
             set { _birthday = value; }
         }
 
-        public Person(string firstName, string lastName, string? email, DateTime? birthday)
+        public int Age
         {
-            _fisrtName = firstName;
+            get { return _age; }
+            //set { _age = value; }
+        }
+
+        public bool IsAdult 
+        { 
+            get { return _isAdult; } 
+            //set { _isAdult = value; }
+        }
+        public bool IsBirthday 
+        { 
+            get { return _isBirthday; }
+            //set { _isBirthday = value; }
+        }
+        public ChineseZodiac ChineseZod 
+        {
+            get { return _chineseZod; }
+            //set { _chineseZod = value; }
+        }
+        public WesternZodiac WesternZod
+        {
+            get { return _westernZod; }
+            //set { _westernZod = value; }
+        }
+
+        public string BirthdayShorten
+        {
+            get { return _birthday.ToShortDateString(); }
+        }
+
+        [JsonConstructor]
+        public Person(Guid id, string firstName, string lastName, string email,
+            int age, bool isAdult, bool isBirthday, ChineseZodiac chineseZod, WesternZodiac westernZod)
+        {
+            _id = id;
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            //Birthday = birthday;
+            _age = age;
+            _isAdult = isAdult;
+            this._westernZod = (WesternZodiac)westernZod;
+            this._chineseZod = (ChineseZodiac)chineseZod;
+            this._isBirthday = isBirthday;
+        }
+
+        public Person(string firstName, string lastName, string? email, DateTime birthday)
+        {
+            _id = Guid.NewGuid();
+            _firstName = firstName;
             _lastName = lastName;
             _email = email;
             _birthday = birthday;
             if (_birthday != null)
             {
+                _chineseZod = GetChineseZodiac((DateTime)_birthday);
                 _age = CalculateAge((DateTime)_birthday);
+                _westernZod = GetWesternZodiac((DateTime)_birthday);
+                _isAdult = _age >= 18;
+                var today = DateTime.Today;
+                var birth = (DateTime)_birthday;
+                _isBirthday = birth.Day == today.Day && birth.Month == today.Month;
             }
+
         }
 
-        public Person(string firstName, string lastName, string email) : this(firstName, lastName, email, null)
+        public Person(string firstName, string lastName, string email) : this(firstName, lastName, email, DateTime.Today)
         {
             
         }
@@ -90,8 +131,7 @@ namespace Laboratory2.Models
         {
 
         }
-        public Person() : this("", "", null, null) { }
-
+        public Person() : this("", "", null, DateTime.Today) { }
 
         public async Task Proceed()
         {

@@ -13,6 +13,9 @@
     <Compile Update="Views\InfoView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\ListView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
@@ -22,6 +25,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\InfoView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ListView.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

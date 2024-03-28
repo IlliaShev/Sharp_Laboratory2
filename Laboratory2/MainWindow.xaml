@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Laboratory2" xmlns:views="clr-namespace:Laboratory2.Views"
         xmlns:viewModels="clr-namespace:Laboratory2.ViewModels"
         mc:Ignorable="d"
-        Title="Laboratory2" SizeToContent="WidthAndHeight" MinHeight="200"  MinWidth="300" 
+        Title="Laboratory4" SizeToContent="WidthAndHeight" MinHeight="200"  MinWidth="300" 
         Content="{Binding CurrentViewModel, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
     <Window.Resources>
         <DataTemplate DataType="{ x:Type viewModels:FormViewModel}">
@@ -14,6 +14,9 @@
         </DataTemplate>
         <DataTemplate DataType="{ x:Type viewModels:InfoViewModel}">
             <views:InfoView></views:InfoView>
+        </DataTemplate>
+        <DataTemplate DataType="{ x:Type viewModels:ListViewModel}">
+            <views:ListView></views:ListView>
         </DataTemplate>
     </Window.Resources>
 </Window>

@@ -12,15 +12,17 @@ namespace Laboratory2.ViewModels
     enum NavigationTypes
     {
         Form,
-        Info
+        Info,
+        List,
+        Edit
     }
 
     internal class NavigateViewModel : BaseNavigationViewModel<NavigationTypes>
     {
-        private Person _person = new();
+        public static Person sharedPerson = new();
         public NavigateViewModel()
         {
-            Navigate(NavigationTypes.Form);
+            Navigate(NavigationTypes.List);
         }
 
         protected override INavigatable<NavigationTypes> CreateViewModel(NavigationTypes type)
@@ -28,9 +30,12 @@ namespace Laboratory2.ViewModels
             switch (type)
             {
                 case NavigationTypes.Form:
-                    return new FormViewModel(() => Navigate(NavigationTypes.Info), ref _person);
+                case NavigationTypes.Edit:
+                    return new FormViewModel(() => Navigate(NavigationTypes.Info), () => Navigate(NavigationTypes.List));
                 case NavigationTypes.Info:
-                    return new InfoViewModel(() => Navigate(NavigationTypes.Form), ref _person);
+                    return new InfoViewModel(() => Navigate(NavigationTypes.List));
+                case NavigationTypes.List:
+                    return new ListViewModel(() => Navigate(NavigationTypes.Form), () => Navigate(NavigationTypes.Info));
                 default:
                     return null;
             }
